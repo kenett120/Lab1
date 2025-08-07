@@ -82,4 +82,14 @@ public class Vista {
         else
             System.out.println("La batalla terminó en empate.");
     }
+
+    public boolean preguntarUsoHabilidad(Pokemon pokemon) {
+        mostrarMensaje("¿Deseas usar la habilidad especial de " + pokemon.getNombre() + "? (s/n)");
+        while (true) {
+            String respuesta = scanner.nextLine().trim().toLowerCase();
+            if (respuesta.equals("s")) return true;
+            if (respuesta.equals("n")) return false;
+            mostrarMensaje("Respuesta inválida. Escribe 's' o 'n'.");
+        }
+    }
 }

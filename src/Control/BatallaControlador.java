@@ -24,8 +24,22 @@ public class BatallaControlador {
             vista.mostrarSeleccion(e1.getNombre(), p1.getNombre());
             vista.mostrarSeleccion(e2.getNombre(), p2.getNombre());
 
-            p1.usarHabilidad(p2);
-            p2.usarHabilidad(p1);
+            if (vista.preguntarUsoHabilidad(p1)) {
+                if (p1.usarHabilidad(p2)) {
+                    vista.mostrarMensaje("¡" + p1.getNombre() + " usó su habilidad!");
+                } else {
+                    vista.mostrarMensaje(p1.getNombre() + " intentó usar su habilidad, pero falló.");
+                }
+            }
+
+            if (vista.preguntarUsoHabilidad(p2)) {
+                if (p2.usarHabilidad(p1)) {
+                    vista.mostrarMensaje("¡" + p2.getNombre() + " usó su habilidad!");
+                } else {
+                    vista.mostrarMensaje(p2.getNombre() + " intentó usar su habilidad, pero falló.");
+                }
+            }
+
 
             int atk1 = p1.calcularAtaqueTotal(p2);
             int atk2 = p2.calcularAtaqueTotal(p1);
